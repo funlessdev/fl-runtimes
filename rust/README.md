@@ -1,6 +1,7 @@
 # Funless wrapper for Rust functions
 
-This project contains a small wrapper for Rust functions, ensuring the compatibility with the WASM runtime in the backend.
+This project contains a small wrapper for Rust functions, ensuring the compatibility with the Wasm runtime in the backend.
+The final Wasm produced receives a JSON string via stdin and returns a JSON string via stdout.
 
 The `lib_fl` folder contains an example Rust project, respecting the current required constraints for Rust functions.
 
