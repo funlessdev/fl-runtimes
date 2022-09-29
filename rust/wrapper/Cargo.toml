@@ -16,5 +16,12 @@
 # under the License.
 #
 
-[workspace]
-members = ["wrapper", "lib_fl"]
+[package]
+name = "wrapper"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde_json = "1.0.85"
+serde = "1.0.145"
+lib_fl = { path = "../lib_fl" }
