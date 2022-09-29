@@ -10,3 +10,18 @@ Current constraints:
 
 - The crate must be of type `lib`
 - The crate must export one function called `fl_main`, with type `serde_json::Value -> serde_json::Value` (the function can panic, as stderr is captured in the backend)
+
+
+
+# Running the docker image
+
+The docker image requires two volumes:
+
+- The user's function, which will be mounted as `/proj/lib_fl` inside the container
+- An output directory, which will be mounted as `/out_wasm` inside the container
+
+To produce the `code.wasm` for the example function inside the directory `out_wasm`, the run command would be:
+
+```
+docker run -v $(pwd)/lib_fl:/lib_fl/ -v $(pwd)/out_wasm:/out_wasm <IMAGE_NAME>
+```
