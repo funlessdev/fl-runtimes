@@ -26,6 +26,6 @@ fn main() {
         serde_json::from_str(&input).expect("Rust Wrapper: input JSON not well-formatted");
     let output = lib_fl::fl_main(json);
 
-    let _result = serde_json::to_writer(std::io::stdout(), &output)
+    serde_json::to_writer(std::io::stdout(), &output)
         .expect("Rust Wrapper: couldn't format output to json");
 }
