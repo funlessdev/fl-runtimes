@@ -18,9 +18,6 @@
 
 pub fn fl_main(body: serde_json::Value) -> serde_json::Value {
     let parsed_body: String = serde_json::from_value(body).expect("Failed to parse JSON in input");
-    let mut out = String::from("Hello ");
-    out.push_str(&parsed_body);
-    out.push_str("!");
-    return serde_json::from_str(&format!(r#""{}""#, &out))
-        .expect("Failed to parse JSON in project");
+    let out = format!("Hello {}!", parsed_body);
+    serde_json::from_str(&format!(r#""{}""#, &out)).expect("Failed to parse JSON in project")
 }
