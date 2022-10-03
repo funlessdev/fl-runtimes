@@ -12,8 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#!/bin/sh
-cp -r /lib_fl/* /proj/lib_fl/
-echo "$(cat /proj/lib_fl/Cargo.toml | dasel put string -r toml 'package.name' 'lib_fl')" > /proj/lib_fl/Cargo.toml
-cargo wasi build --release
-cp /proj/target/wasm32-wasi/release/wrapper.wasm /out_wasm/code.wasm
+name: Runtimes CI - License Check
+on:
+  push:
+    tags:
+      - v*
+    branches:
+      - master
+      - main
+  pull_request:
+
+jobs:
+  license:
+    name: Check license headers
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: License
+        uses: apache/skywalking-eyes@main

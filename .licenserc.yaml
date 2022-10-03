@@ -12,8 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#!/bin/sh
-cp -r /lib_fl/* /proj/lib_fl/
-echo "$(cat /proj/lib_fl/Cargo.toml | dasel put string -r toml 'package.name' 'lib_fl')" > /proj/lib_fl/Cargo.toml
-cargo wasi build --release
-cp /proj/target/wasm32-wasi/release/wrapper.wasm /out_wasm/code.wasm
+header:
+  license:
+    spdx-id: Apache-2.0
+    software-name: funless
+    copyright-owner: Giuseppe De Palma, Matteo Trentin
+
+  paths-ignore:
+    - '*.lock'
+    - '**/README.md'
+    - '**/LICENSE'
+    - '**/target/**'
+    - '*.gitignore'
+    - CODEOWNERS
