@@ -19,9 +19,9 @@ header:
     copyright-owner: Giuseppe De Palma, Matteo Trentin
 
   paths-ignore:
-    - '*.lock'
+    - '**/*.lock'
     - '**/README.md'
     - '**/LICENSE'
     - '**/target/**'
-    - '*.gitignore'
+    - '**/*.gitignore'
     - CODEOWNERS
