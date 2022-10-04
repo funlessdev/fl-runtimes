@@ -12,17 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-header:
-  license:
-    spdx-id: Apache-2.0
-    software-name: funless
-    copyright-owner: Giuseppe De Palma, Matteo Trentin
-
-  paths-ignore:
-    - '**/*.json'
-    - '**/*.lock'
-    - '**/README.md'
-    - '**/LICENSE'
-    - '**/target/**'
-    - '**/*.gitignore'
-    - CODEOWNERS
+#!/bin/sh
+cp -r /lib_fl/* /proj/lib_fl/ &&
+cd /proj/lib_fl &&
+npm install &&
+cd /proj &&
+parcel build --no-source-maps main.js &&
+/usr/bin/javy dist/main.js -o code.wasm &&
+cp /proj/code.wasm /out_wasm/code.wasm
