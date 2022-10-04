@@ -19,6 +19,7 @@ header:
     copyright-owner: Giuseppe De Palma, Matteo Trentin
 
   paths-ignore:
+    - '**/*.json'
     - '**/*.lock'
     - '**/README.md'
     - '**/LICENSE'
