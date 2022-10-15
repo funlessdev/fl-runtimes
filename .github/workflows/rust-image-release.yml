@@ -41,7 +41,7 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v3.0.0
         with:
-          context: .
+          context: ./rust
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ghcr.io/funlessdev/fl-rust-builder:latest
