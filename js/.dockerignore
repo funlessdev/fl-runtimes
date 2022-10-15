@@ -12,12 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#!/bin/sh
-mkdir /proj/lib_fl
-cp -r /lib_fl/* /proj/lib_fl/
-cd /proj/lib_fl
-npm install
-cd /proj
-parcel build --no-source-maps main.js
-/usr/bin/javy dist/main.js -o code.wasm
-mv /proj/code.wasm /out_wasm/code.wasm
+lib_fl/
+.gitignore
+Dockerfile
+.dockerignore
+README.md

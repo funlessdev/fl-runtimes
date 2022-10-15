@@ -18,8 +18,8 @@ Current constraints:
 
 The docker image requires two volumes:
 
-- The user's function, which will be mounted as `/proj/lib_fl` inside the container
-- An output directory, which will be mounted as `/out_wasm` inside the container
+- The user's function, which needs to be mounted as `/lib_fl` inside the container
+- An output directory, which needs to be mounted as `/out_wasm` inside the container
 
 To produce the `code.wasm` for the example function inside the directory `out_wasm`, the run command would be:
 

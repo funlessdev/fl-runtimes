@@ -34,15 +34,11 @@ RUN apt-get update && \
 
 RUN npm install -g parcel
 
-COPY init_script.sh .
-
 WORKDIR /proj
 
 COPY . .
-RUN rm -r ./lib_fl/*
 
 VOLUME ["/lib_fl/"]
 VOLUME ["/out_wasm"]
 
-
-CMD ["sh", "/init_script.sh"]
+CMD ["sh", "init_script.sh"]
