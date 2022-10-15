@@ -12,13 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Rust WASM Builder Image Release
+name: JS WASM Builder Image Release
 
 on:
   push:
     paths:
-      - "rust/**"
-      - "!rust/README.md"
+      - "js/**"
+      - "js/README.md"
   workflow_dispatch:
 
 jobs:
@@ -42,7 +42,7 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v3.0.0
         with:
-          context: ./rust
+          context: ./js
           push: true
           platforms: linux/amd64
-          tags: ghcr.io/funlessdev/fl-rust-builder:latest
+          tags: ghcr.io/funlessdev/fl-js-builder:latest
