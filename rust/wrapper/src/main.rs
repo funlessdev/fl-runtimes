@@ -16,12 +16,12 @@ fn main() {
     let mut input: String = String::new();
     std::io::stdin()
         .read_line(&mut input)
-        .expect("Rust Wrapper: couldn't read input");
+        .expect("Rust Wrapper: could not read input");
 
     let json: serde_json::Value =
         serde_json::from_str(&input).expect("Rust Wrapper: input JSON not well-formatted");
     let output = lib_fl::fl_main(json);
 
     serde_json::to_writer(std::io::stdout(), &output)
-        .expect("Rust Wrapper: couldn't format output to json");
+        .expect("Rust Wrapper: could not format output to json");
 }
