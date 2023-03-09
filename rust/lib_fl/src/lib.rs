@@ -12,20 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use serde::{Deserialize, Serialize};
+use fl_wasm_rs::prelude::*;
+use serde::Deserialize;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Default, FLFunction)]
+struct MyFn;
+
+#[derive(Default, Deserialize)]
 struct Person {
     name: String,
 }
 
-pub fn fl_main(body: serde_json::Value) -> serde_json::Value {
-    match serde_json::from_value::<Person>(body) {
+fn fl_main(input: serde_json::Value) -> FLResult {
+    let parsed_input = serde_json::from_value::<Person>(input);
+    match parsed_input {
         Ok(person) => {
-            let out = format!("Hello {}", person.name);
-            serde_json::from_str(&format!(r#"{{"payload": "{}" }}"#, &out)).expect("couldn't format result to json")
+            let out = format!("Hello {}!", person.name);
+            let json: Result<serde_json::Value, serde_json::Error> =
+                serde_json::from_str(&format!(r#"{{"payload": "{}" }}"#, &out));
+            json.map_err(|_| FLError::ExecError("Failed to parse JSON".to_string()))
         }
-        Err(_) => serde_json::from_str("\"invalid input, perhaps you're missing the 'name' field?\"").expect("could not format error to json")
+        Err(e) => Err(FLError::ExecError(format!("Failed to parse input: {}", e))),
     }
-    
 }

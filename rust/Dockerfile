@@ -16,10 +16,6 @@ FROM rust:alpine
 RUN apk update && apk upgrade --no-cache && apk add --no-cache curl && apk add --no-cache musl-dev && \
     rustup target add wasm32-wasi && cargo install cargo-wasi
 
-RUN curl -sSLf "https://github.com/TomWright/dasel/releases/download/v2.1.1/dasel_linux_amd64" -L -o dasel && \
-    chmod +x dasel && \
-    mv ./dasel /bin/dasel
-
 WORKDIR /proj
 COPY . .
 

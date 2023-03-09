@@ -15,6 +15,6 @@
 #!/bin/sh
 mkdir /proj/lib_fl
 cp -r /lib_fl/* /proj/lib_fl/
-echo "$(cat /proj/lib_fl/Cargo.toml | dasel put -t string -r toml 'package.name' -v 'lib_fl')" > /proj/lib_fl/Cargo.toml
+cd /proj/lib_fl
 cargo wasi build --release
-mv /proj/target/wasm32-wasi/release/wrapper.wasm /out_wasm/code.wasm
+mv target/wasm32-wasi/release/lib_fl.wasi.wasm /out_wasm/code.wasm
